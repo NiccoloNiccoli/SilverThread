@@ -1,0 +1,10 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1710703279
+clouds.png::CompressedTexture2D::2234834828636966876::1710691969::1710691969::1::::<><>::
+gengar.png::CompressedTexture2D::7840593219324973971::1710686845::1710686845::1::::<><>::
+icon.svg::CompressedTexture2D::9114685461345817614::1710686494::1710686501::1::::<><>::
+log.md::TextFile::-1::1710691558::0::1::::<><>::
+move.gd::GDScript::-1::1710698018::0::1::::<>Node2D<>::
+README.md::TextFile::-1::1710703082::0::1::::<><>::
+sample_scene.tscn::PackedScene::3325187642619304471::1710698170::0::1::::<><>::uid://djybopch5m804::::res://gengar.png<>res://move.gd<>uid://ddxocbt02lbgx::::res://wall.png<>uid://63tnyaaaoh3y::::res://clouds.png
+wall.png::CompressedTexture2D::7418162962870349903::1710688914::1710688914::1::::<><>::
