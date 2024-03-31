@@ -15,6 +15,14 @@ run/main_scene="res://sample_scene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=270
+window/size/viewport_height=480
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+window/handheld/orientation=1
+
 [dotnet]
 
 project/assembly_name="GiocoDiFrobby"
@@ -29,4 +37,9 @@ click={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
+textures/default_filters/use_nearest_mipmap_filter=true
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

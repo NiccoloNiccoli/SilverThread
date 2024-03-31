@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn0l03iqfn3qv"]
+
+[ext_resource type="Script" path="res://Rooms/hub.gd" id="1_jhf23"]
+[ext_resource type="PackedScene" uid="uid://pj4mrnrcxvgt" path="res://tiles/tile_map.tscn" id="1_nbq5y"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_jhf23")
+
+[node name="TileMap" parent="." instance=ExtResource("1_nbq5y")]

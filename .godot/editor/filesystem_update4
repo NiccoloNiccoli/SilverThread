@@ -1,3 +1,7 @@
 res://sample_scene.tscn
+res://Rooms/hub.tscn
+res://Rooms/base_v_corridor.tscn
+res://Rooms/boss_room.tscn
+res://enemy.tscn
+res://player.gd
 res://move.gd
-res://log.md
