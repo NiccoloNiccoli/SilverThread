@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dianel4p2kxqg"]
+
+[ext_resource type="Script" path="res://shoot_needle.gd" id="1_1wpid"]
+[ext_resource type="Texture2D" uid="uid://c1ajlvn6acbua" path="res://needle.png" id="2_27u6c"]
+[ext_resource type="Texture2D" uid="uid://bqidwbwd3ktnd" path="res://string.png" id="3_5w3np"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k6rrv"]
+radius = 1.0
+height = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a1ji1"]
+radius = 7.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1wpid")
+
+[node name="Needle" type="CharacterBody2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Needle"]
+texture = ExtResource("2_27u6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Needle"]
+shape = SubResource("CapsuleShape2D_k6rrv")
+
+[node name="Area2D" type="Area2D" parent="Needle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Needle/Area2D"]
+shape = SubResource("CircleShape2D_a1ji1")
+
+[node name="Thread" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("3_5w3np")
+centered = false
+offset = Vector2(-8, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[connection signal="area_entered" from="Needle/Area2D" to="." method="_on_area_2d_area_entered"]

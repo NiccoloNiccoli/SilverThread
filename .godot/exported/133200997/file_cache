@@ -1,6 +1,9 @@
-res://sample_scene.tscn::34f77f7380cf32515133bd490efccc6b::1711910297::res://.godot/exported/133200997/export-fbc510e91b535fa8d120ddeca15adabe-sample_scene.scn
-res://Rooms/hub.tscn::4b4ce10c08f5f8003fc51129eeecb80b::1711910084::res://.godot/exported/133200997/export-2c6825b1a99c78d7f776decfae41b50d-hub.scn
-res://Rooms/base_v_corridor.tscn::e6a800fae012b114369fde417f39bbd9::1711910084::res://.godot/exported/133200997/export-8a8fd72ff2d4cdb10aa71a534434305c-base_v_corridor.scn
-res://Rooms/boss_room.tscn::8c90d4c0ba88be4480c72333207b0784::1711910084::res://.godot/exported/133200997/export-86fd8222ffb51131e1164019460474c2-boss_room.scn
+res://sample_scene.tscn::777585c27ff4b1e30cf53f0e7bc85b6a::1713454715::res://.godot/exported/133200997/export-fbc510e91b535fa8d120ddeca15adabe-sample_scene.scn
+res://Rooms/hub.tscn::01cb1cfaeae11701d235c034e67bb697::1713454583::res://.godot/exported/133200997/export-2c6825b1a99c78d7f776decfae41b50d-hub.scn
+res://Rooms/base_v_corridor.tscn::e6a800fae012b114369fde417f39bbd9::1713454583::res://.godot/exported/133200997/export-8a8fd72ff2d4cdb10aa71a534434305c-base_v_corridor.scn
+res://Rooms/boss_room.tscn::8c90d4c0ba88be4480c72333207b0784::1713454583::res://.godot/exported/133200997/export-86fd8222ffb51131e1164019460474c2-boss_room.scn
 res://tiles/tile_map.tscn::c7deb0b92032136c441d7f6861a4cb53::1711891884::res://.godot/exported/133200997/export-2f49c332bdc83f497453b1f30fb56c9e-tile_map.scn
-res://enemy.tscn::687ae5ad341e9192f2a99edc788cb983::1711910084::res://.godot/exported/133200997/export-ec12bd2205a8e44213188668d747d7fa-enemy.scn
+res://enemy.tscn::687ae5ad341e9192f2a99edc788cb983::1713454583::res://.godot/exported/133200997/export-ec12bd2205a8e44213188668d747d7fa-enemy.scn
+res://needle.tscn::7cbe31dd6900399a2487df8d8a1f57c8::1713454584::res://.godot/exported/133200997/export-d0399e91ad443fc780ad9e9e9a9f9501-needle.scn
+res://needle_2.tscn::0e915c8b05eadcbf0ee19a1eb944884e::1713454584::res://.godot/exported/133200997/export-2c980166a67525833edfa9c7d421fafa-needle_2.scn
+res://dir_arrow.tscn::c14d5ca0131c13aca845906af8fe91b6::1713454584::res://.godot/exported/133200997/export-f2213faeaf6bb31e3e2b4468e61cdcad-dir_arrow.scn

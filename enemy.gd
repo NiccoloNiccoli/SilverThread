@@ -1,4 +1,6 @@
-extends RigidBody2D
+class_name Enemy
+extends CharacterBody2D
+
 
 const max_health = 3
 var health
@@ -10,13 +12,18 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
+	# move the character back and forth
+	# position.x += 0.1
 	pass
 
 func get_hit(dmg):
 	health -= dmg
 	print("Position ", position)
 	if health <= 0:
+		self.visible = false
+		$CollisionShape2D.disabled = true
+		
 		queue_free()
 
 func is_dead():
@@ -25,5 +32,5 @@ func is_dead():
 	else:
 		return true
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	pass

@@ -1,7 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://daajqm8s1mbjc"]
+[gd_scene load_steps=24 format=3 uid="uid://daajqm8s1mbjc"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_ckvms"]
 [ext_resource type="Texture2D" uid="uid://fcad6q65plhh" path="res://noBKG_KnightIdle_strip.png" id="1_w8rxe"]
+[ext_resource type="Script" path="res://finite_state_machine.gd" id="3_0wq4v"]
+[ext_resource type="Script" path="res://enemy_state_idle.gd" id="4_bik60"]
+[ext_resource type="Script" path="res://enemy_state_walk.gd" id="5_hwvra"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mol76"]
 atlas = ExtResource("1_w8rxe")
@@ -112,7 +115,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_glfsv")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 14.0
 }]
 
@@ -123,13 +126,13 @@ height = 32.0
 radius = 7.0
 height = 26.0
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
 position = Vector2(0, -15)
 script = ExtResource("1_ckvms")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6eeji")
-frame_progress = 0.168562
+animation = &"idle"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
@@ -142,5 +145,22 @@ shape = SubResource("CapsuleShape2D_w3bhv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_wgldx")
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("3_0wq4v")
+state = NodePath("EnemyWalkState")
+
+[node name="EnemyIdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("4_bik60")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="EnemyWalkState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("5_hwvra")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+speed = 10
+GRAVITY = 100
+range = 50
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

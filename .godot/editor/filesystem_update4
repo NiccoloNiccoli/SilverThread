@@ -1,7 +1,9 @@
 res://sample_scene.tscn
+res://shoot_needle.gd
 res://Rooms/hub.tscn
 res://Rooms/base_v_corridor.tscn
 res://Rooms/boss_room.tscn
 res://enemy.tscn
-res://player.gd
-res://move.gd
+res://needle.tscn
+res://needle_2.tscn
+res://dir_arrow.tscn

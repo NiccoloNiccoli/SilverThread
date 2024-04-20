@@ -1,17 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnm0mb8qgef7d"]
+[gd_scene load_steps=13 format=3 uid="uid://bnm0mb8qgef7d"]
 
 [ext_resource type="Script" path="res://spawn_sections.gd" id="1_5l7f7"]
 [ext_resource type="Script" path="res://move.gd" id="1_yqq6m"]
-[ext_resource type="Texture2D" uid="uid://dxyj6dkve5v8c" path="res://little_robot.png" id="3_0fyj8"]
+[ext_resource type="Texture2D" uid="uid://bd8iar60bvov1" path="res://test_sprite64x.png" id="3_qigdd"]
 [ext_resource type="Texture2D" uid="uid://63tnyaaaoh3y" path="res://clouds.png" id="4_jt00o"]
+[ext_resource type="PackedScene" uid="uid://dianel4p2kxqg" path="res://needle_2.tscn" id="5_nouax"]
 [ext_resource type="Texture2D" uid="uid://c7wpwvrr6quhv" path="res://tiles/stone_packed.png" id="5_w7hhk"]
+[ext_resource type="PackedScene" uid="uid://tpiq1pi7ednf" path="res://dir_arrow.tscn" id="6_inmer"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7r7pq"]
-radius = 9.0
+radius = 21.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2verb"]
-radius = 6.0
-height = 16.0
+radius = 13.0
+height = 54.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xntgk"]
+radius = 6.40312
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kev6p"]
 texture = ExtResource("5_w7hhk")
@@ -47,14 +52,11 @@ texture_region_size = Vector2i(18, 18)
 7:0/0 = 0
 7:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:0/0/physics_layer_0/angular_velocity = 0.0
-7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.125, -8, 8, -0.625, 8, 8, -8, 8)
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, -8, 8, 8, -8, 8)
 8:0/0 = 0
 8:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:0/0/physics_layer_0/angular_velocity = 0.0
-8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -4, -8, 8, 4.125, 8, 8, -8, 8)
-9:0/0 = 0
-9:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:0/0/physics_layer_0/angular_velocity = 0.0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, -8, 8, 8, 8, 8, -8, 8)
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
@@ -91,9 +93,6 @@ texture_region_size = Vector2i(18, 18)
 8:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:1/0/physics_layer_0/angular_velocity = 0.0
 8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-9:1/0 = 0
-9:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:1/0/physics_layer_0/angular_velocity = 0.0
 0:2/0 = 0
 0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:2/0/physics_layer_0/angular_velocity = 0.0
@@ -130,9 +129,6 @@ texture_region_size = Vector2i(18, 18)
 8:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:2/0/physics_layer_0/angular_velocity = 0.0
 8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-9:2/0 = 0
-9:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:2/0/physics_layer_0/angular_velocity = 0.0
 0:3/0 = 0
 0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:3/0/physics_layer_0/angular_velocity = 0.0
@@ -160,9 +156,6 @@ texture_region_size = Vector2i(18, 18)
 8:3/0 = 0
 8:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:3/0/physics_layer_0/angular_velocity = 0.0
-9:3/0 = 0
-9:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:3/0/physics_layer_0/angular_velocity = 0.0
 0:4/0 = 0
 0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:4/0/physics_layer_0/angular_velocity = 0.0
@@ -190,9 +183,6 @@ texture_region_size = Vector2i(18, 18)
 8:4/0 = 0
 8:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:4/0/physics_layer_0/angular_velocity = 0.0
-9:4/0 = 0
-9:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:4/0/physics_layer_0/angular_velocity = 0.0
 0:5/0 = 0
 0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:5/0/physics_layer_0/angular_velocity = 0.0
@@ -220,9 +210,6 @@ texture_region_size = Vector2i(18, 18)
 8:5/0 = 0
 8:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:5/0/physics_layer_0/angular_velocity = 0.0
-9:5/0 = 0
-9:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:5/0/physics_layer_0/angular_velocity = 0.0
 0:6/0 = 0
 0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:6/0/physics_layer_0/angular_velocity = 0.0
@@ -250,9 +237,6 @@ texture_region_size = Vector2i(18, 18)
 8:6/0 = 0
 8:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:6/0/physics_layer_0/angular_velocity = 0.0
-9:6/0 = 0
-9:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:6/0/physics_layer_0/angular_velocity = 0.0
 0:7/0 = 0
 0:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:7/0/physics_layer_0/angular_velocity = 0.0
@@ -280,9 +264,6 @@ texture_region_size = Vector2i(18, 18)
 8:7/0 = 0
 8:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:7/0/physics_layer_0/angular_velocity = 0.0
-9:7/0 = 0
-9:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:7/0/physics_layer_0/angular_velocity = 0.0
 0:8/0 = 0
 0:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:8/0/physics_layer_0/angular_velocity = 0.0
@@ -310,39 +291,6 @@ texture_region_size = Vector2i(18, 18)
 8:8/0 = 0
 8:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:8/0/physics_layer_0/angular_velocity = 0.0
-9:8/0 = 0
-9:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:8/0/physics_layer_0/angular_velocity = 0.0
-0:9/0 = 0
-0:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:9/0/physics_layer_0/angular_velocity = 0.0
-1:9/0 = 0
-1:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:9/0/physics_layer_0/angular_velocity = 0.0
-2:9/0 = 0
-2:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:9/0/physics_layer_0/angular_velocity = 0.0
-3:9/0 = 0
-3:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:9/0/physics_layer_0/angular_velocity = 0.0
-4:9/0 = 0
-4:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:9/0/physics_layer_0/angular_velocity = 0.0
-5:9/0 = 0
-5:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-5:9/0/physics_layer_0/angular_velocity = 0.0
-6:9/0 = 0
-6:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-6:9/0/physics_layer_0/angular_velocity = 0.0
-7:9/0 = 0
-7:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-7:9/0/physics_layer_0/angular_velocity = 0.0
-8:9/0 = 0
-8:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-8:9/0/physics_layer_0/angular_velocity = 0.0
-9:9/0 = 0
-9:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:9/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_m6lb5"]
 physics_layer_0/collision_layer = 1
@@ -353,6 +301,7 @@ script = ExtResource("1_5l7f7")
 
 [node name="player" type="CharacterBody2D" parent="."]
 position = Vector2(137, 197)
+collision_layer = 2
 script = ExtResource("1_yqq6m")
 
 [node name="Area2D" type="Area2D" parent="player" groups=["player"]]
@@ -362,7 +311,7 @@ position = Vector2(0, -0.00012207)
 shape = SubResource("CircleShape2D_7r7pq")
 
 [node name="Sprite2D" type="Sprite2D" parent="player"]
-texture = ExtResource("3_0fyj8")
+texture = ExtResource("3_qigdd")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 
@@ -378,12 +327,28 @@ position = Vector2(-74.2376, 984.456)
 scale = Vector2(0.764334, 0.766145)
 texture = ExtResource("4_jt00o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+[node name="BigCollisionShape" type="CollisionShape2D" parent="player"]
 shape = SubResource("CapsuleShape2D_2verb")
+
+[node name="Needle" parent="player" instance=ExtResource("5_nouax")]
+
+[node name="DirArrow" parent="player" instance=ExtResource("6_inmer")]
+
+[node name="RayCast2D" type="RayCast2D" parent="player"]
+
+[node name="SmallCollisionShape" type="CollisionShape2D" parent="player"]
+shape = SubResource("CircleShape2D_xntgk")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_m6lb5")
 format = 2
+
+[node name="DebugText" type="RichTextLabel" parent="."]
+z_index = 1
+offset_left = 1.0
+offset_right = 173.0
+offset_bottom = 57.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 
 [connection signal="area_entered" from="player/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="player/Area2D" to="player" method="_on_area_2d_area_entered"]
