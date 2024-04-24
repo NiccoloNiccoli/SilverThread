@@ -1,22 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnm0mb8qgef7d"]
+[gd_scene load_steps=6 format=3 uid="uid://bnm0mb8qgef7d"]
 
 [ext_resource type="Script" path="res://spawn_sections.gd" id="1_5l7f7"]
-[ext_resource type="Script" path="res://move.gd" id="1_yqq6m"]
-[ext_resource type="Texture2D" uid="uid://bd8iar60bvov1" path="res://test_sprite64x.png" id="3_qigdd"]
-[ext_resource type="Texture2D" uid="uid://63tnyaaaoh3y" path="res://clouds.png" id="4_jt00o"]
-[ext_resource type="PackedScene" uid="uid://dianel4p2kxqg" path="res://needle_2.tscn" id="5_nouax"]
+[ext_resource type="PackedScene" uid="uid://ufn0ufvkly7g" path="res://player.tscn" id="2_h0yly"]
 [ext_resource type="Texture2D" uid="uid://c7wpwvrr6quhv" path="res://tiles/stone_packed.png" id="5_w7hhk"]
-[ext_resource type="PackedScene" uid="uid://tpiq1pi7ednf" path="res://dir_arrow.tscn" id="6_inmer"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7r7pq"]
-radius = 21.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2verb"]
-radius = 13.0
-height = 54.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xntgk"]
-radius = 6.40312
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kev6p"]
 texture = ExtResource("5_w7hhk")
@@ -299,45 +285,7 @@ sources/2 = SubResource("TileSetAtlasSource_kev6p")
 [node name="main" type="Node2D"]
 script = ExtResource("1_5l7f7")
 
-[node name="player" type="CharacterBody2D" parent="."]
-position = Vector2(137, 197)
-collision_layer = 2
-script = ExtResource("1_yqq6m")
-
-[node name="Area2D" type="Area2D" parent="player" groups=["player"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Area2D"]
-position = Vector2(0, -0.00012207)
-shape = SubResource("CircleShape2D_7r7pq")
-
-[node name="Sprite2D" type="Sprite2D" parent="player"]
-texture = ExtResource("3_qigdd")
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-
-[node name="Background2" type="Sprite2D" parent="player/Camera2D"]
-z_index = -1
-position = Vector2(-5.00006, -335)
-scale = Vector2(1.54908, 1.54908)
-texture = ExtResource("4_jt00o")
-
-[node name="Background2" type="Sprite2D" parent="player/Camera2D/Background2"]
-z_index = -1
-position = Vector2(-74.2376, 984.456)
-scale = Vector2(0.764334, 0.766145)
-texture = ExtResource("4_jt00o")
-
-[node name="BigCollisionShape" type="CollisionShape2D" parent="player"]
-shape = SubResource("CapsuleShape2D_2verb")
-
-[node name="Needle" parent="player" instance=ExtResource("5_nouax")]
-
-[node name="DirArrow" parent="player" instance=ExtResource("6_inmer")]
-
-[node name="RayCast2D" type="RayCast2D" parent="player"]
-
-[node name="SmallCollisionShape" type="CollisionShape2D" parent="player"]
-shape = SubResource("CircleShape2D_xntgk")
+[node name="player" parent="." instance=ExtResource("2_h0yly")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_m6lb5")
@@ -349,6 +297,3 @@ offset_left = 1.0
 offset_right = 173.0
 offset_bottom = 57.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-
-[connection signal="area_entered" from="player/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="player/Area2D" to="player" method="_on_area_2d_area_entered"]

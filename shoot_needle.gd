@@ -33,6 +33,8 @@ func stronger_shoot(dir:Vector2, speed_buff:float)->void:
 func release():
 	flying = false
 	hooked = false
+	# $Needle/CollisionShape2D.disabled = true
+	# $Needle/SmallCollisionShape2D2.disabled = true
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,6 +62,8 @@ func _physics_process(delta):
 			is_hooked.emit()
 			hooked = true
 			flying = false
+			#$Needle/CollisionShape2D.disabled = true
+			#$Needle/SmallCollisionShape2D2.disabled = false
 	tip = $Needle.global_position
 	# Distance mechanism
 	if flying and tip.distance_to(initial_position) > MAX_DISTANCE:
