@@ -1,15 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://ufn0ufvkly7g"]
+[gd_scene load_steps=10 format=3 uid="uid://ufn0ufvkly7g"]
 
 [ext_resource type="Script" path="res://move.gd" id="1_vdigu"]
 [ext_resource type="Texture2D" uid="uid://br18n5xcv3gyt" path="res://Silver thread character test.png" id="2_jsmv6"]
-[ext_resource type="Texture2D" uid="uid://63tnyaaaoh3y" path="res://clouds.png" id="3_x46ky"]
+[ext_resource type="Texture2D" uid="uid://cqrthfpreecn4" path="res://OIG4.jpg" id="3_4seq8"]
 [ext_resource type="PackedScene" uid="uid://dianel4p2kxqg" path="res://needle_2.tscn" id="4_8vd5q"]
 [ext_resource type="PackedScene" uid="uid://tpiq1pi7ednf" path="res://dir_arrow.tscn" id="5_xm85w"]
+[ext_resource type="Texture2D" uid="uid://c0dwqlg4fdx0o" path="res://little_arrow.png" id="7_cotbi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7r7pq"]
 radius = 29.7322
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2verb"]
+radius = 15.0
 height = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xntgk"]
@@ -32,19 +34,13 @@ texture = ExtResource("2_jsmv6")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Background2" type="Sprite2D" parent="Camera2D"]
+modulate = Color(0.227451, 0.227451, 0.227451, 1)
 z_index = -1
 position = Vector2(-5.00006, -335)
 scale = Vector2(1.54908, 1.54908)
-texture = ExtResource("3_x46ky")
-
-[node name="Background2" type="Sprite2D" parent="Camera2D/Background2"]
-z_index = -1
-position = Vector2(-74.2376, 984.456)
-scale = Vector2(0.764334, 0.766145)
-texture = ExtResource("3_x46ky")
+texture = ExtResource("3_4seq8")
 
 [node name="BigCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_2verb")
 
 [node name="Needle" parent="." instance=ExtResource("4_8vd5q")]
@@ -56,5 +52,11 @@ shape = SubResource("CapsuleShape2D_2verb")
 [node name="SmallCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_xntgk")
+
+[node name="LittleArrow" type="Sprite2D" parent="."]
+position = Vector2(0, -55)
+texture = ExtResource("7_cotbi")
+
+[node name="LittleBallsContainer" type="Node2D" parent="."]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

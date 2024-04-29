@@ -1,32 +1,35 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1713978005
+::res://::1714402804
 Ago silver thread.png::CompressedTexture2D::8099805369763785943::1713978005::1713978005::1::::<><>::
 body_arrow.png::CompressedTexture2D::4479582056329380584::1713093086::1713093168::1::::<><>::
 clouds.png::CompressedTexture2D::2234834828636966876::1710695569::1710695569::1::::<><>::
 dir_arrow.gd::GDScript::-1::1713104100::0::1::::<>Node2D<>::
-dir_arrow.tscn::PackedScene::1365069393263699243::1713536000::0::1::::<><>::res://dir_arrow.gd<>uid://xy5k38au3a1::::res://tip_arrow.png<>uid://b427cdws71rie::::res://body_arrow.png
+dir_arrow.tscn::PackedScene::1365069393263699243::1714402008::0::1::::<><>::res://dir_arrow.gd<>uid://xy5k38au3a1::::res://tip_arrow.png<>uid://b427cdws71rie::::res://body_arrow.png
 enemy.gd::GDScript::-1::1713459026::0::1::::Enemy<>CharacterBody2D<>::
-enemy.tscn::PackedScene::7159837758828482616::1713536000::0::1::::<><>::res://enemy.gd<>uid://fcad6q65plhh::::res://noBKG_KnightIdle_strip.png<>res://finite_state_machine.gd<>res://enemy_state_idle.gd<>res://enemy_state_walk.gd
+enemy.tscn::PackedScene::7159837758828482616::1714402008::0::1::::<><>::res://enemy.gd<>uid://fcad6q65plhh::::res://noBKG_KnightIdle_strip.png<>res://finite_state_machine.gd<>res://enemy_state_idle.gd<>res://enemy_state_walk.gd
 enemy_state.gd::GDScript::-1::1713457075::0::1::::State<>Node<>::
 enemy_state_idle.gd::GDScript::-1::1713459198::0::1::::EnemyIdleState<>State<>::
 enemy_state_walk.gd::GDScript::-1::1713462338::0::1::::EnemyWalkState<>State<>::
-export_presets.cfg::TextFile::-1::1713454741::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1714047430::0::1::::<><>::
 finite_state_machine.gd::GDScript::-1::1713457301::0::1::::FiniteStateMachine<>Node<>::
 gengar.png::CompressedTexture2D::7840593219324973971::1710690445::1710690445::1::::<><>::
 icon.svg::CompressedTexture2D::9114685461345817614::1710690094::1710690101::1::::<><>::
+little_arrow.png::CompressedTexture2D::6535120526492664004::1714399480::1714399495::1::::<><>::
+little_balls.png::CompressedTexture2D::7337742049155074291::1714399408::1714399495::1::::<><>::
 little_robot.png::CompressedTexture2D::8823752507376220936::1711909952::1711909952::1::::<><>::
 log.md::TextFile::-1::1710695158::0::1::::<><>::
-move.gd::GDScript::-1::1713465645::0::1::::<>Node2D<>::
+move.gd::GDScript::-1::1714402007::0::1::::<>Node2D<>::
 needle.gd::GDScript::-1::1713453491::0::1::::<>Node2D<>::
 needle.png::CompressedTexture2D::6598318523124285148::1712679185::1712679186::1::::<><>::
-needle.tscn::PackedScene::1305700223836586564::1713536000::0::1::::<><>::uid://bqidwbwd3ktnd::::res://string.png<>res://needle.gd<>uid://c1ajlvn6acbua::::res://needle.png
-needle_2.tscn::PackedScene::7721569887539358114::1713536000::0::1::::<><>::res://shoot_needle.gd<>uid://c1ajlvn6acbua::::res://needle.png<>uid://bqidwbwd3ktnd::::res://string.png
+needle.tscn::PackedScene::1305700223836586564::1714402008::0::1::::<><>::uid://bqidwbwd3ktnd::::res://string.png<>res://needle.gd<>uid://c1ajlvn6acbua::::res://needle.png
+needle_2.tscn::PackedScene::7721569887539358114::1714402008::0::1::::<><>::res://shoot_needle.gd<>uid://dnnuu1mpuvo7x::::res://Ago silver thread.png<>uid://bqidwbwd3ktnd::::res://string.png
 noBKG_KnightIdle_strip.png::CompressedTexture2D::355079985469912025::1711897826::1711897826::1::::<><>::
+OIG4.jpg::CompressedTexture2D::5932123697400358047::1714402804::1714402806::1::::<><>::
 player.gd::GDScript::-1::1711898425::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::1414933786443526398::1714402008::0::1::::<><>::res://move.gd<>uid://br18n5xcv3gyt::::res://Silver thread character test.png<>uid://63tnyaaaoh3y::::res://clouds.png<>uid://dianel4p2kxqg::::res://needle_2.tscn<>uid://tpiq1pi7ednf::::res://dir_arrow.tscn<>uid://c0dwqlg4fdx0o::::res://little_arrow.png
 README.md::TextFile::-1::1710706682::0::1::::<><>::
-player.tscn::PackedScene::1414933786443526398::1713977976::0::1::::<><>::res://move.gd<>uid://bd8iar60bvov1::::res://test_sprite64x.png<>uid://63tnyaaaoh3y::::res://clouds.png<>uid://dianel4p2kxqg::::res://needle_2.tscn<>uid://tpiq1pi7ednf::::res://dir_arrow.tscn
-sample_scene.tscn::PackedScene::3325187642619304471::1713536000::0::1::::<><>::res://spawn_sections.gd<>res://move.gd<>uid://bd8iar60bvov1::::res://test_sprite64x.png<>uid://63tnyaaaoh3y::::res://clouds.png<>uid://dianel4p2kxqg::::res://needle_2.tscn<>uid://c7wpwvrr6quhv::::res://tiles/stone_packed.png<>uid://tpiq1pi7ednf::::res://dir_arrow.tscn
-shoot_needle.gd::GDScript::-1::1713536000::0::1::::<>Node2D<>::
+sample_scene.tscn::PackedScene::3325187642619304471::1714402008::0::1::::<><>::res://spawn_sections.gd<>uid://ufn0ufvkly7g::::res://player.tscn<>uid://c7wpwvrr6quhv::::res://tiles/stone_packed.png
+shoot_needle.gd::GDScript::-1::1714399114::0::1::::<>Node2D<>::
 Silver thread character test.png::CompressedTexture2D::3635333334578310795::1713978005::1713978005::1::::<><>::
 spawn_sections.gd::GDScript::-1::1713110256::0::1::::<>Node2D<>::
 string.png::CompressedTexture2D::3526178729061490937::1712679168::1712679344::1::::<><>::
@@ -35,13 +38,13 @@ test_sprite64x.png::CompressedTexture2D::2665598358357256116::1713184303::171318
 tip_arrow.png::CompressedTexture2D::48992039975129418::1713099576::1713099578::1::::<><>::
 wall.png::CompressedTexture2D::7418162962870349903::1710692514::1710692514::1::::<><>::
 ::res://android/::1711554859
-::res://apk/::1713454746
-::res://Rooms/::1713536000
-base_v_corridor.tscn::PackedScene::7267752775115145700::1713536000::0::1::::<><>::uid://pj4mrnrcxvgt::::res://tiles/tile_map.tscn<>res://Rooms/v_corridor.gd
+::res://apk/::1714047429
+::res://Rooms/::1714402008
+base_v_corridor.tscn::PackedScene::7267752775115145700::1714402008::0::1::::<><>::uid://pj4mrnrcxvgt::::res://tiles/tile_map.tscn<>res://Rooms/v_corridor.gd
 boss_room.gd::GDScript::-1::1711899317::0::1::::<>Node2D<>::
-boss_room.tscn::PackedScene::4409729622410876678::1713536000::0::1::::<><>::res://Rooms/boss_room.gd<>uid://pj4mrnrcxvgt::::res://tiles/tile_map.tscn<>uid://daajqm8s1mbjc::::res://enemy.tscn
+boss_room.tscn::PackedScene::4409729622410876678::1714402008::0::1::::<><>::res://Rooms/boss_room.gd<>uid://pj4mrnrcxvgt::::res://tiles/tile_map.tscn<>uid://daajqm8s1mbjc::::res://enemy.tscn
 hub.gd::GDScript::-1::1711895444::0::1::::<>Node2D<>::
-hub.tscn::PackedScene::3351199110353501661::1713536000::0::1::::<><>::res://Rooms/hub.gd<>uid://pj4mrnrcxvgt::::res://tiles/tile_map.tscn<>uid://daajqm8s1mbjc::::res://enemy.tscn
+hub.tscn::PackedScene::3351199110353501661::1714402008::0::1::::<><>::res://Rooms/hub.gd<>uid://pj4mrnrcxvgt::::res://tiles/tile_map.tscn<>uid://daajqm8s1mbjc::::res://enemy.tscn
 v_corridor.gd::GDScript::-1::1711899275::0::1::::<>Node2D<>::
 ::res://tiles/::1711893171
 0x72_DungeonTilesetII_v1.7.png::CompressedTexture2D::2091097258831236011::1711558642::1711558642::1::::<><>::

@@ -35,6 +35,18 @@ const MAX_SPEED_UP_DUE_TO_SWIPE = 2.0
 @onready var big_collision_shape = $BigCollisionShape
 @onready var small_collision_shape = $SmallCollisionShape
 
+# ----------------- Managing direction indicator -----------------
+@onready var dir_arrow = $LittleArrow
+var is_going_to_move = false
+@onready var little_balls_container = $LittleBallsContainer
+const LITTLE_BALL_DISTANCE = 30 # pixels between two little balls
+const MAX_LITTLE_BALLS = 10
+var distance_player_to_mouse = 0
+var _old_n_displayer_balls = 0
+var n_displayed_balls = 0
+const BALLS_FROM_PLAYER_OFFSET = 2 # how many "little_ball_distance"s the first visible ball is
+
+
 func _ready():
 	player = get_node(".")
 	line = Line2D.new() # Create a new Line2D node
@@ -43,6 +55,12 @@ func _ready():
 	is_line_instantiated = true
 	small_collision_shape.disabled = true
 	big_collision_shape.disabled = false
+	for i in range(MAX_LITTLE_BALLS):
+		var sprite = Sprite2D.new()
+		sprite.texture = preload("res://little_balls.png")
+		sprite.visible = false
+		little_balls_container.add_child(sprite)
+	print("Little balls ", little_balls_container.get_children().size())
 	
 func _draw():
 	var v = Vector2(112, 216)
@@ -52,7 +70,9 @@ func _draw():
 func _input(event : InputEvent) -> void:
 	if Input.is_action_just_pressed("click"):
 		press_tap_position = event.position
+		is_going_to_move = true
 	if Input.is_action_just_released("click"):
+		is_going_to_move = false
 		release_tap_position = event.position
 		big_collision_shape.disabled = true
 		small_collision_shape.disabled = false
@@ -70,6 +90,7 @@ func _input(event : InputEvent) -> void:
 			print(swipe_shoot_speed_increment)
 			print(press_tap_position, release_tap_position)
 			print(swipe_direction)
+		
 			
 	if false:
 		if Input.is_action_just_pressed("click"):
@@ -117,6 +138,34 @@ func calculate_gesture() -> void:
 	
 func _process(_delta):
 	ray_cast_2d.target_position = -get_local_mouse_position()
+	if is_going_to_move:
+		# Setting up the arrow
+		dir_arrow.visible = true
+		dir_arrow.position = -get_local_mouse_position()
+		dir_arrow.rotation = dir_arrow.position.angle() + PI/2
+
+		# Setting up the little balls
+		distance_player_to_mouse = get_local_mouse_position().distance_to(Vector2.ZERO)
+		n_displayed_balls = floor(distance_player_to_mouse / LITTLE_BALL_DISTANCE) - BALLS_FROM_PLAYER_OFFSET
+		n_displayed_balls = clamp(n_displayed_balls, 0, MAX_LITTLE_BALLS)
+		if _old_n_displayer_balls > n_displayed_balls:
+			for i in range(n_displayed_balls, _old_n_displayer_balls):
+				var ball = little_balls_container.get_child(i)
+				ball.visible = false
+		little_balls_container.visible = true
+		for i in range(n_displayed_balls):
+			var ball = little_balls_container.get_child(i)
+			ball.visible = true
+			ball.position = dir_arrow.position.normalized() * ((i + BALLS_FROM_PLAYER_OFFSET) * LITTLE_BALL_DISTANCE)
+		
+		_old_n_displayer_balls = n_displayed_balls
+	else:
+		dir_arrow.visible = false
+		if little_balls_container.visible:
+			for i in range(n_displayed_balls):
+				var ball = little_balls_container.get_child(i)
+				ball.visible = false
+			little_balls_container.visible = false
 	queue_redraw()
 
 func _physics_process(delta):
