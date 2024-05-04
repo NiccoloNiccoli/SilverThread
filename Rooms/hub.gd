@@ -1,13 +1,13 @@
 extends Node2D
 
-const block_height = 19
-const tile_size = 16
+const block_height = 22 # FIXME
+const tile_size = 32 # FIXME
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func get_player_spawn_position():
-	return {"x": 6, "y":15}
+	return {"x": 0, "y":19}
 
 func propagate(is_boss_room_existent, boss_chance = 0.0):
 	# Instantiate other pieces

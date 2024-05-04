@@ -1,6 +1,6 @@
 extends Node2D
 
-var v_offset = 16 * 21
+var v_offset = 32 * 21
 var height = 10
 const STD_ASPECT_RATIO = 9.0/16.0
 const SHORT_SIDE = 360 #pixels
@@ -23,9 +23,9 @@ func _ready():
 	print(hub.position)
 	add_child(hub)
 	var pos = hub.get_player_spawn_position()
-	get_node("player").position.x = hub.position.x + pos.x * 16
-	get_node("player").position.y = hub.position.y + pos.y * 16
-	hub.propagate(false)
+	get_node("player").position.x = hub.position.x + pos.x * 32
+	get_node("player").position.y = hub.position.y + pos.y * 32
+	# hub.propagate(false)
 	
 
 

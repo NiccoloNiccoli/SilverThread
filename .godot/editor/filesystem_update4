@@ -1,5 +1,6 @@
-res://sample_scene.tscn
+res://tiles/tile_map.tscn
 res://shoot_needle.gd
+res://sample_scene.tscn
 res://Rooms/hub.tscn
 res://Rooms/base_v_corridor.tscn
 res://Rooms/boss_room.tscn
@@ -8,5 +9,5 @@ res://needle.tscn
 res://needle_2.tscn
 res://dir_arrow.tscn
 res://player.tscn
-res://enemy_state_walk.gd
-res://move.gd
+res://spawn_sections.gd
+res://Rooms/hub.gd
