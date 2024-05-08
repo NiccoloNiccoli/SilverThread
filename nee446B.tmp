@@ -1,42 +1,49 @@
 [gd_scene load_steps=6 format=3 uid="uid://dianel4p2kxqg"]
 
-[ext_resource type="Script" path="res://shoot_needle.gd" id="1_1wpid"]
-[ext_resource type="Texture2D" uid="uid://dnnuu1mpuvo7x" path="res://Ago silver thread.png" id="2_a8qr0"]
-[ext_resource type="Texture2D" uid="uid://bqidwbwd3ktnd" path="res://string.png" id="3_5w3np"]
+[ext_resource type="Texture2D" uid="uid://bqidwbwd3ktnd" path="res://string.png" id="1_d0idf"]
+[ext_resource type="Script" path="res://shoot_needle.gd" id="1_tamvn"]
+[ext_resource type="Texture2D" uid="uid://ugl5bshhvvl3" path="res://assets/sprites/needle/needle.png" id="2_ukf72"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k6rrv"]
-radius = 3.0
-height = 6.0
+radius = 2.0
+height = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a1ji1"]
 radius = 7.0
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_1wpid")
+script = ExtResource("1_tamvn")
 
 [node name="Needle" type="CharacterBody2D" parent="."]
 position = Vector2(0, -8)
 collision_layer = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Needle"]
-position = Vector2(1, -18)
-texture = ExtResource("2_a8qr0")
+position = Vector2(0, 8)
+texture = ExtResource("2_ukf72")
+centered = false
+offset = Vector2(-16, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Needle"]
-position = Vector2(1, -3)
+position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_k6rrv")
 
 [node name="Area2D" type="Area2D" parent="Needle"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Needle/Area2D"]
+position = Vector2(-1, -5)
 shape = SubResource("CircleShape2D_a1ji1")
 
 [node name="Thread" type="Sprite2D" parent="."]
+modulate = Color(0.513726, 1, 1, 1)
 texture_repeat = 2
-texture = ExtResource("3_5w3np")
+texture = ExtResource("1_d0idf")
 centered = false
 offset = Vector2(-8, 0)
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
+
+[node name="RayCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, -38)
 
 [connection signal="area_entered" from="Needle/Area2D" to="." method="_on_area_2d_area_entered"]

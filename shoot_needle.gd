@@ -1,6 +1,7 @@
 extends Node2D
 
-const SPEED = 30
+const SPEED = 10
+
 var flying = false
 var hooked = false
 var direction = Vector2(0,0)
@@ -13,6 +14,9 @@ const MIN_DISTANCE = 1
 const DMG_ON_HIT = 1
 
 var collision = null
+
+@onready var raycast = $Needle/RayCast
+@onready var backraycast = $Needle/BackRayCast
 
 signal is_hooked
 
@@ -38,6 +42,8 @@ func release():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.visible = true
+	$Needle/CollisionShape2D.disabled = true
 	pass # Replace with function body.
 
 
@@ -46,13 +52,15 @@ func _process(delta):
 	self.visible = flying or hooked
 	if not self.visible:
 		return
+	if raycast.is_colliding() and not backraycast.is_colliding():
+		$Needle/CollisionShape2D.disabled = false
 	var local_tip = to_local(tip)
 	$Thread.rotation = self.position.angle_to_point(local_tip) + deg_to_rad(90)
 	$Needle.rotation = self.position.angle_to_point(local_tip) + deg_to_rad(90)
 	$Thread.position = local_tip
 	$Thread.region_rect.size.y = local_tip.length()
-	# if hooked:
-		# print("Hooked!")
+	if hooked:
+		$Needle/CollisionShape2D.disabled = true
 
 func _physics_process(delta):
 	$Needle.global_position = tip
@@ -76,7 +84,7 @@ func _bounce():
 	direction.x *= randf_range(0.8, 1.2)
 	direction.y *= randf_range(0.8, 1.2)
 	# is it useful?
-	shoot(-direction)
+	# shoot(-direction)
 	
 
 func _on_area_2d_area_entered(area):
@@ -89,6 +97,11 @@ func _on_area_2d_area_entered(area):
 			_bounce()
 		else:
 			print("Enemy pos", enemy.global_position)
-			shoot(direction)
+			# shoot(direction)
 			print("killed")
 		print("Enemy collided")
+	if area.is_in_group("player"):
+		$Needle/CollisionShape2D.disabled = true
+		hooked = false
+		print("Pipip")
+		

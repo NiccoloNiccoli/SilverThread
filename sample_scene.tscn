@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnm0mb8qgef7d"]
 
 [ext_resource type="Script" path="res://spawn_sections.gd" id="1_5l7f7"]
-[ext_resource type="PackedScene" uid="uid://ufn0ufvkly7g" path="res://player.tscn" id="2_h0yly"]
+[ext_resource type="PackedScene" uid="uid://buuxxqmi7pdtv" path="res://Player.tscn" id="3_ebhra"]
 [ext_resource type="Texture2D" uid="uid://c7wpwvrr6quhv" path="res://tiles/stone_packed.png" id="5_w7hhk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kev6p"]
@@ -285,15 +285,8 @@ sources/2 = SubResource("TileSetAtlasSource_kev6p")
 [node name="main" type="Node2D"]
 script = ExtResource("1_5l7f7")
 
-[node name="player" parent="." instance=ExtResource("2_h0yly")]
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_m6lb5")
 format = 2
 
-[node name="DebugText" type="RichTextLabel" parent="."]
-z_index = 1
-offset_left = 1.0
-offset_right = 173.0
-offset_bottom = 57.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+[node name="Player" parent="." instance=ExtResource("3_ebhra")]

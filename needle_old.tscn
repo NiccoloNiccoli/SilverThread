@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://suqxr4jqd373"]
+
+[ext_resource type="Script" path="res://needle.gd" id="1_v4kya"]
+[ext_resource type="Texture2D" uid="uid://bqidwbwd3ktnd" path="res://string.png" id="2_1fgj3"]
+[ext_resource type="Texture2D" uid="uid://c1ajlvn6acbua" path="res://needle.png" id="3_1p4mv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omuxo"]
+radius = 3.0
+height = 23.5294
+
+[node name="Node" type="Node2D"]
+script = ExtResource("1_v4kya")
+
+[node name="Thread" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 16)
+texture = ExtResource("2_1fgj3")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
+
+[node name="Needle" type="CharacterBody2D" parent="."]
+collision_layer = 4
+
+[node name="NeedleSprite" type="Sprite2D" parent="Needle"]
+texture = ExtResource("3_1p4mv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Needle"]
+position = Vector2(0, 1)
+scale = Vector2(1, 0.680001)
+shape = SubResource("CapsuleShape2D_omuxo")

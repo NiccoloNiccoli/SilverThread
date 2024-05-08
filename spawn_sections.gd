@@ -23,8 +23,8 @@ func _ready():
 	print(hub.position)
 	add_child(hub)
 	var pos = hub.get_player_spawn_position()
-	get_node("player").position.x = hub.position.x + pos.x * 32
-	get_node("player").position.y = hub.position.y + pos.y * 32
+	get_node("Player").position.x = hub.position.x + pos.x * 32
+	get_node("Player").position.y = hub.position.y + pos.y * 32
 	# hub.propagate(false)
 	
 

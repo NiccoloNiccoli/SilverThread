@@ -1,31 +1,71 @@
-[gd_scene load_steps=5 format=3 uid="uid://suqxr4jqd373"]
+[gd_scene load_steps=6 format=3 uid="uid://dianel4p2kxqg"]
 
 [ext_resource type="Texture2D" uid="uid://bqidwbwd3ktnd" path="res://string.png" id="1_d0idf"]
-[ext_resource type="Script" path="res://needle.gd" id="1_nawaw"]
-[ext_resource type="Texture2D" uid="uid://c1ajlvn6acbua" path="res://needle.png" id="2_c543b"]
+[ext_resource type="Script" path="res://shoot_needle.gd" id="1_tamvn"]
+[ext_resource type="Texture2D" uid="uid://ugl5bshhvvl3" path="res://assets/sprites/needle/needle.png" id="2_ukf72"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omuxo"]
-radius = 3.0
-height = 23.5294
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k6rrv"]
+radius = 4.0
+height = 8.0
 
-[node name="Node" type="Node2D"]
-script = ExtResource("1_nawaw")
+[sub_resource type="CircleShape2D" id="CircleShape2D_a1ji1"]
+radius = 17.0294
 
-[node name="Thread" type="Sprite2D" parent="."]
-texture_repeat = 2
-position = Vector2(0, 16)
-texture = ExtResource("1_d0idf")
-centered = false
-region_enabled = true
-region_rect = Rect2(16, 16, 16, 16)
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_tamvn")
+metadata/_edit_horizontal_guides_ = [-75.0, -65.0]
+metadata/_edit_vertical_guides_ = [25.0, -25.0]
 
 [node name="Needle" type="CharacterBody2D" parent="."]
+position = Vector2(0, -8)
 collision_layer = 4
 
-[node name="NeedleSprite" type="Sprite2D" parent="Needle"]
-texture = ExtResource("2_c543b")
+[node name="Sprite2D" type="Sprite2D" parent="Needle"]
+position = Vector2(0, 8)
+texture = ExtResource("2_ukf72")
+centered = false
+offset = Vector2(-16, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Needle"]
-position = Vector2(0, 1)
-scale = Vector2(1, 0.680001)
-shape = SubResource("CapsuleShape2D_omuxo")
+position = Vector2(0, 11)
+shape = SubResource("CapsuleShape2D_k6rrv")
+
+[node name="Area2D" type="Area2D" parent="Needle"]
+position = Vector2(0, 19)
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Needle/Area2D"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_a1ji1")
+
+[node name="RayCast3" type="RayCast2D" parent="Needle"]
+visible = false
+position = Vector2(-4.76837e-07, 8)
+rotation = -0.708768
+enabled = false
+target_position = Vector2(13.665, 11.7162)
+
+[node name="RayCast2" type="RayCast2D" parent="Needle"]
+visible = false
+position = Vector2(0, 8)
+rotation = -0.354384
+enabled = false
+target_position = Vector2(-17.8193, -6.59324)
+
+[node name="RayCast" type="RayCast2D" parent="Needle"]
+position = Vector2(0, 8)
+target_position = Vector2(0, -75)
+
+[node name="BackRayCast" type="RayCast2D" parent="Needle"]
+target_position = Vector2(0, 44)
+
+[node name="Thread" type="Sprite2D" parent="."]
+modulate = Color(0.513726, 1, 1, 1)
+texture_repeat = 2
+texture = ExtResource("1_d0idf")
+centered = false
+offset = Vector2(-8, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[connection signal="area_entered" from="Needle/Area2D" to="." method="_on_area_2d_area_entered"]
