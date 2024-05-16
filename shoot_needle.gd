@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 10
+const SPEED = 70
 
 var flying = false
 var hooked = false
@@ -101,7 +101,7 @@ func _on_area_2d_area_entered(area):
 			print("killed")
 		print("Enemy collided")
 	if area.is_in_group("player"):
-		$Needle/CollisionShape2D.disabled = true
-		hooked = false
+		# $Needle/CollisionShape2D.disabled = true
+		# hooked = false
 		print("Pipip")
 		

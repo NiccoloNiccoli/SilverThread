@@ -5,7 +5,7 @@ extends Node2D
 var direction := Vector2(0,0)
 var tip := Vector2(0,0)
 
-const SPEED = 60
+const SPEED = 100
 var flying = false
 var hooked = false
 

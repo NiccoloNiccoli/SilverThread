@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 # ----------------- General Variables -----------------
-@export var speed = 1200
-const threshold := 30
+@export var speed = 1000
+const threshold := 30 
 var player
 @export var use_swipe : bool = true # FIXME if true, the player will shoot the needle with a swipe, otherwise with a tap
 
@@ -47,7 +47,7 @@ var swipe_direction = Vector2(0,0)
 var swipe_shoot = false
 var swipe_shoot_speed_increment = 1.0
 
-const MAX_SPEED_UP_DUE_TO_SWIPE = 2.0
+const MAX_SPEED_UP_DUE_TO_SWIPE = 1.0
 
 # ----------------- Collision Shapes -----------------
 @onready var big_body_collision_shape = $BigBodyCollider
@@ -67,6 +67,9 @@ var n_displayed_balls = 0
 const BALLS_FROM_PLAYER_OFFSET = 2 # how many "little_ball_distance"s the first visible ball is
 
 
+signal going_to_move
+signal going_to_stop
+
 func _ready():
 	player = get_node(".")
 
@@ -85,11 +88,13 @@ func _input(event : InputEvent) -> void:
 	if Input.is_action_just_pressed("click"):
 		press_tap_position = event.position
 		is_going_to_move = true
+		emit_signal("going_to_move")
 	if Input.is_action_just_released("click"):
 		is_going_to_move = false
+		emit_signal("going_to_stop")
 		release_tap_position = event.position
 		_set_body_collider(false)
-		if press_tap_position.distance_to(release_tap_position) < 30:
+		if press_tap_position.distance_to(release_tap_position) < 10:
 			print("Tap")
 			needle.shoot(event.position - get_viewport().content_scale_size * 0.5)	
 			print(press_tap_position, release_tap_position)
@@ -156,15 +161,17 @@ func _process(_delta):
 		_set_body_collider(true)
 	
 	if is_going_to_move:
+	
 		# Setting up the arrow
 		dir_arrow.visible = true
-		dir_arrow.position = -get_local_mouse_position()
+		dir_arrow.position = -get_local_mouse_position().normalized() * (4+2) * LITTLE_BALL_DISTANCE
 		dir_arrow.rotation = dir_arrow.position.angle() + PI/2
 
 		# Setting up the little balls
 		distance_player_to_mouse = get_local_mouse_position().distance_to(Vector2.ZERO)
-		n_displayed_balls = floor(distance_player_to_mouse / LITTLE_BALL_DISTANCE) - BALLS_FROM_PLAYER_OFFSET
-		n_displayed_balls = clamp(n_displayed_balls, 0, MAX_LITTLE_BALLS)
+		# n_displayed_balls = floor(distance_player_to_mouse / LITTLE_BALL_DISTANCE) - BALLS_FROM_PLAYER_OFFSET
+		# n_displayed_balls = clamp(n_displayed_balls, 0, MAX_LITTLE_BALLS)
+		n_displayed_balls = 4
 		if _old_n_displayer_balls > n_displayed_balls:
 			for i in range(n_displayed_balls, _old_n_displayer_balls):
 				var ball = little_balls_container.get_child(i)
@@ -178,11 +185,13 @@ func _process(_delta):
 		_old_n_displayer_balls = n_displayed_balls
 	else:
 		dir_arrow.visible = false
+		
 		if little_balls_container.visible:
 			for i in range(n_displayed_balls):
 				var ball = little_balls_container.get_child(i)
 				ball.visible = false
 			little_balls_container.visible = false
+			
 	queue_redraw()
 
 func _physics_process(delta):

@@ -1,5 +1,6 @@
-Button
+TextureButton
 Control
+Button
 Node2D
 CollisionShape2D
 Area2D
@@ -12,4 +13,3 @@ Node
 EnemyWalkState
 EnemyIdleState
 FiniteStateMachine
-RichTextLabel
