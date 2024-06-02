@@ -1,35 +1,49 @@
 extends Camera2D
 
-var dst_x = 10.0
-var dst_y = 5.0
+const _DST_X = 15.0
+const _DST_Y = 5.0
+var dst_x 
+var dst_y 
 var epsilon = 0.1
 var going_to_move = false
 var stopwatch = 0.0
-const CAMERA_SHIFT = 150
+const CAMERA_SHIFT = 75
 # Called when the node enters the scene tree for the first time.
+var tween
+
+var update_camera_offset = false
+
+func _set_new_target_point():
+	_generate_next_target()
+	tween = create_tween()
+	tween.tween_property($".", "position", Vector2(dst_x, dst_y), 1)
+	tween.tween_interval(1.5)
+	tween.tween_property($".", "position", Vector2(0,0), 1)
+	tween.tween_interval(1.5)
+	tween.tween_callback(_set_new_target_point)
+	
+
+func _generate_next_target():
+	var _x = randi_range(-4, 4) / 4.0
+	var _y = randi_range(-4, 4) / 4.0
+	dst_x = _DST_X * _x
+	dst_y = _DST_Y * _y
+
 func _ready():
-	dst_x *= 1 if randf() < 0.5 else -1
-	dst_y *= 1 if randf() < 0.5 else -1
+	_generate_next_target()
+	tween = create_tween()
+	tween.tween_property($".", "position", Vector2(dst_x, dst_y), 1)
+	tween.tween_interval(1.5)
+	tween.tween_property($".", "position", Vector2(0,0), 1)
+	tween.tween_interval(1.5)
+	tween.tween_callback(_set_new_target_point)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	stopwatch += delta
-	if going_to_move and stopwatch > 0.5:
-		if abs(offset.x - dst_x) < epsilon:
-			dst_x *= -1
-		if abs(offset.y - dst_y) < epsilon:
-			dst_y *= -1
-		offset.x = lerp(offset.x, 0 - get_local_mouse_position().normalized().x * CAMERA_SHIFT, delta * 2)
-		offset.y = lerp(offset.y, 0 - get_local_mouse_position().normalized().y * CAMERA_SHIFT, delta * 2)
-		print(stopwatch)
-	else:
-		if abs(offset.x - dst_x) < epsilon:
-			dst_x *= -1
-		if abs(offset.y - dst_y) < epsilon:
-			dst_y *= -1
-		offset.x = lerp(offset.x, 0 + dst_x, delta)
-		offset.y = lerp(offset.y, 0 + dst_y, delta)
+	if update_camera_offset:
+		offset.x = lerp(offset.x, 0-get_local_mouse_position().normalized().x * CAMERA_SHIFT, delta * 2)
+		offset.y = lerp(offset.y, 0-get_local_mouse_position().normalized().y * CAMERA_SHIFT, delta * 2)
 	
 
 
@@ -37,11 +51,19 @@ func _process(delta):
 func _on_player_going_to_move():
 	print("going to move!")
 	going_to_move = true
-	stopwatch = 0
-	
+	update_camera_offset=true
+	tween.stop()
 
 
 
 func _on_player_going_to_stop():
 	print("STOP!")
 	going_to_move = false
+	update_camera_offset = false
+	tween.stop()
+	tween = create_tween().set_ease(Tween.EASE_IN)
+	tween.tween_property($".", "offset", Vector2.ZERO, 0.5)
+	tween.tween_interval(1.0)
+	tween.tween_callback(_set_new_target_point)
+	
+	

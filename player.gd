@@ -34,7 +34,7 @@ var rng = RandomNumberGenerator.new()
 
 # ----------------- Needle Variables -----------------
 @onready var needle = $Needle
-const THREAD_PULL = 500
+const THREAD_PULL = 450
 var _velocity = Vector2(0,0)
 var thread_velocity = Vector2(0,0)
 var needle_starting_position = Vector2(0,0)
@@ -94,13 +94,16 @@ func _input(event : InputEvent) -> void:
 		emit_signal("going_to_stop")
 		release_tap_position = event.position
 		_set_body_collider(false)
-		if press_tap_position.distance_to(release_tap_position) < 10:
+		if press_tap_position.distance_to(release_tap_position) < 10 and false:
 			print("Tap")
 			needle.shoot(event.position - get_viewport().content_scale_size * 0.5)	
 			print(press_tap_position, release_tap_position)
 		else:
 			print("Swipe")
-			swipe_direction = release_tap_position - press_tap_position
+			# swipe_direction = release_tap_position - press_tap_position
+			swipe_direction = get_local_mouse_position().normalized()
+			print("RELEASE_TAP_POS ", release_tap_position)
+			print("PLAYER.POS ", player.position)
 			# XXX must speed up the needle with longer swipes (do it better)
 			swipe_shoot_speed_increment = clamp(sqrt(swipe_direction.dot(swipe_direction)) / 1e2, 1.0, MAX_SPEED_UP_DUE_TO_SWIPE)
 			needle.stronger_shoot(-swipe_direction, swipe_shoot_speed_increment)

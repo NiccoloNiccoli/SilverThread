@@ -11,7 +11,8 @@ var initial_position = Vector2(0,0)
 const MAX_DISTANCE = 500
 const MIN_DISTANCE = 1
 
-const DMG_ON_HIT = 1
+const DMG_ON_HIT : float = 1.0
+const CRIT_MULT : float = 3.0
 
 var collision = null
 
@@ -91,7 +92,11 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group("enemy"):
 		var enemy = area.get_parent()
 		var pos = enemy.global_position
-		enemy.get_hit(DMG_ON_HIT)
+		if area.is_in_group("critarea"):
+			enemy.get_hit(DMG_ON_HIT * CRIT_MULT)
+			print("CRIT!")
+		else:
+			enemy.get_hit(DMG_ON_HIT)
 		if not enemy.is_dead():
 			print("hit")
 			_bounce()
